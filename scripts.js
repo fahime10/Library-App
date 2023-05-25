@@ -32,7 +32,7 @@ function renderContent() {
             <p>Pages: ${book.pages}</p>
             <p class="read">${book.read ? "Read" : "Not Read"}</p>
             <button class="remove-book-btn" onClick="removeBook(${i})">Remove</button>
-            <button class="toggle-read-btn" onClick="toggleRead(${i})">Toggle Read</button> 
+            <button class="toggle-read-btn" onClick="toggleRead(${i})">Read/Not Read</button> 
         </div>`;
         library.appendChild(bookElement);
     }
