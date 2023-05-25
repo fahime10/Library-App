@@ -33,10 +33,9 @@ body {
 }
 
 .card {
+    display: grid;
     background-color: white;
     padding: 1rem;
-    width: 10rem;
-    height: 12rem;
     border-radius: 10px;
-    margin-top: 1rem;
+    margin: 1rem 0.5rem 0;
 }
