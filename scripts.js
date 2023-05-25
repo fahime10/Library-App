@@ -10,6 +10,15 @@ function Book(title, author, year, pages, read) {
     this.read = read;
 }
 
+Book.prototype.toggleRead = function() {
+    this.read = !this.read;
+}
+
+function toggleRead(index) {
+    myLibrary[index].toggleRead();
+    renderContent();
+}
+
 function renderContent() {
     let library = document.querySelector("#library-container");
     library.innerHTML = "";
@@ -23,6 +32,7 @@ function renderContent() {
             <p>Pages: ${book.pages}</p>
             <p class="read">${book.read ? "Read" : "Not Read"}</p>
             <button class="remove-book-btn" onClick="removeBook(${i})">Remove</button>
+            <button class="toggle-read-btn" onClick="toggleRead(${i})">Toggle Read</button> 
         </div>`;
         library.appendChild(bookElement);
     }
@@ -38,7 +48,6 @@ function addBookToLibrary() {
     let newBook = new Book(title, author, year, pages, read.checked);
     myLibrary.push(newBook);
     renderContent();
-    console.log(read.checked);
 }
 
 function removeBook(index) {
@@ -62,10 +71,13 @@ document.querySelector("#add-book").addEventListener("submit", function(event) {
     addBookToLibrary();
 })
 
-const mazeRunner = new Book("The Maze Runner", "James Dashner", "2009", "222", "yes");
-const numberFour = new Book("I am number Four", "Jobie Hughes", "2010", "440", "yes");
-const bulletMissed = new Book("The Bullet That Missed", "Richard Osman", "2022", "432", "no");
+document.addEventListener("DOMContentLoaded", function() {
+    const mazeRunner = new Book("The Maze Runner", "James Dashner", "2009", "222", true);
+    const numberFour = new Book("I am number Four", "Jobie Hughes", "2010", "440", true);
+    const bulletMissed = new Book("The Bullet That Missed", "Richard Osman", "2022", "432", false);
 
-myLibrary.push(mazeRunner);
-myLibrary.push(numberFour);
-myLibrary.push(bulletMissed);
+    myLibrary.push(mazeRunner);
+    myLibrary.push(numberFour);
+    myLibrary.push(bulletMissed);
+    renderContent();
+});
