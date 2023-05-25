@@ -1,5 +1,4 @@
 body {
-    margin: 0;
     background-color: rgb(240, 219, 166);
 }
 
@@ -26,4 +25,18 @@ body {
     padding: 1rem 0;
     margin: 1rem auto;
     border-radius: 10px;
+}
+
+#library-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.card {
+    background-color: white;
+    padding: 1rem;
+    width: 10rem;
+    height: 12rem;
+    border-radius: 10px;
+    margin-top: 1rem;
 }
