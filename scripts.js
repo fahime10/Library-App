@@ -22,6 +22,7 @@ function renderContent() {
             <h5 class=author>by ${book.author}</h5>
             <p>Pages: ${book.pages}</p>
             <p class="read">${book.read ? "Read" : "Not Read"}</p>
+            <button class="remove-book-btn" onClick="removeBook(${i})">Remove</button>
         </div>`;
         library.appendChild(bookElement);
     }
@@ -38,6 +39,11 @@ function addBookToLibrary() {
     myLibrary.push(newBook);
     renderContent();
     console.log(read.checked);
+}
+
+function removeBook(index) {
+    myLibrary.splice(index, 1);
+    renderContent();
 }
 
 function viewAddForm() {
