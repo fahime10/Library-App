@@ -2,17 +2,20 @@ let myLibrary = [];
 const newBookBtn = document.getElementById("new-book-btn");
 const cancelBtn = document.getElementById("cancel-btn");
 
-function Book(title, author, year, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.year = year;
-    this.pages = pages;
-    this.read = read;
+class Book {
+    constructor(title, author, year, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.pages = pages;
+        this.read = read;
+    }
+    
+    toggleRead() {
+        this.read = !this.read;
+    }
 }
 
-Book.prototype.toggleRead = function() {
-    this.read = !this.read;
-}
 
 function toggleRead(index) {
     myLibrary[index].toggleRead();
