@@ -48,9 +48,12 @@ function addBookToLibrary() {
     let pages = document.querySelector("#pages").value;
     let read = document.querySelector("#read");
     
-    let newBook = new Book(title, author, year, pages, read.checked);
-    myLibrary.push(newBook);
-    renderContent();
+    if (validateInputs(title, author, year, pages, read)) {
+        let newBook = new Book(title, author, year, pages, read.checked);
+        myLibrary.push(newBook);
+        renderContent();
+        removeAddForm();
+    }
 }
 
 function removeBook(index) {
@@ -84,3 +87,45 @@ document.addEventListener("DOMContentLoaded", function() {
     myLibrary.push(bulletMissed);
     renderContent();
 });
+
+function validateInputs(title, author, year, pages, read) {
+    let counter = 0;
+
+    if (title.length > 0) {
+        counter++;
+        document.querySelector(".title-error").textContent = "";
+    } else {
+        document.querySelector(".title-error").textContent = "Title length is too short. Must be at least 1 character.";
+    }
+
+    if (author.length > 0) {
+        counter++;
+        document.querySelector(".author-error").textContent = "";
+    } else {
+        document.querySelector(".author-error").textContent = "Author name length is too short. Must be at least 1 character.";
+    }
+
+    if (year.match(/^\d{4}$/)) {
+        counter++;
+        document.querySelector(".year-error").textContent = "";
+    } else {
+        document.querySelector(".year-error").textContent = "Year must be in 4 digit format. No alphabetical characters";
+    }
+
+    if (pages.length > 0) {
+        counter++;
+        if (pages[0] == "e") {
+            document.querySelector(".pages-error").textContent = "Please input number of pages without the 'e'";
+        } else {
+            document.querySelector(".pages-error").textContent = "";
+        }
+    } else {
+        document.querySelector(".pages-error").textContent = "Please input number of pages";
+    }
+
+    if (counter == 4) {
+        return true;
+    } else {
+        return false;
+    }
+}
