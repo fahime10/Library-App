@@ -27,6 +27,24 @@ body {
     border-radius: 10px;
 }
 
+/* input:invalid {
+    border-color: #900;
+    background-color: #fdd;
+}
+  
+input:focus:invalid {
+    outline: none;
+} */
+
+.title-error, .author-error, .year-error, .pages-error {
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+  
+    box-sizing: border-box;
+}
+
 #library-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
